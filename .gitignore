@@ -1,0 +1,11 @@
+# Ignore virtual environment
+venv
+images
+
+# Ignore all cache related files
+*.sqlite
+__pycache__
+*.pyc
+
+# Ignore testing file
+test.py

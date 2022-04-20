@@ -1,0 +1,37 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content%}
+<h1 align="center">Questions</h1>
+<h2 align="left">Time limit is 30 mins</h2>
+<form method="POST">
+   <div>
+       <p>Q1 − Write a program to implement Tower of Hanoi using python 3. </p>
+       <textarea name="note1" id="note1" rows="9" cols="60">
+       </textarea>
+       <p>Q1 − Write a program to implement fibonacci series using recursive function. </p>
+       <textarea name="note2" id="note2" rows="9" cols="60">
+       </textarea>
+	   <p>Q1 − Write a program to that uses all the concepts of OOPS. </p>
+       <textarea name="note3" id="note3" rows="9" cols="60">
+       </textarea>
+	   
+   </div>
+   <input type='submit' style='width:100px;margin:0 50%;position:relative;left:-50px;'>
+   <span class="timer" id="timer">{{ exercise }}s</span>
+    <progress max="{{ exercise }}" value="{{ exercise }}" class="progress progress--set" id="progressBar"></progress>
+
+    <script type="application/javascript">
+        const timerElement = document.getElementById("timer");
+        const progressBar = document.getElementById("progressBar")
+        var timerCounter = progressBar.max;
+        const interval = setInterval(() => {
+            if (timerCounter === 300) {
+                window.location.href = "{{ url_for('static',filename='styles.css') }}";
+                clearInterval(interval);
+            }
+            timerCounter = timerCounter - 1;
+            
+            timerElement.innerText = timerCounter + "s";
+            progressBar.value = timerCounter;
+        }, 1000);
+    </script>
+</form>
+{% endblock %}
